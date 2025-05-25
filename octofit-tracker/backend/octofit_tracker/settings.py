@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-&5c5daw78r7smj1c=!c1+!pqw(lt-!g1a7w2)xh=djxpo+(j34
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['crispy-space-giggle-69r5wxp94x94hw4g-8000.app.github.dev', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'octofit',
 ]
 
 MIDDLEWARE = [
@@ -129,13 +130,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Enable CORS
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = [
+    'DELETE',
     'GET',
+    'OPTIONS',
+    'PATCH',
     'POST',
     'PUT',
-    'DELETE',
-    'OPTIONS',
 ]
 CORS_ALLOW_HEADERS = [
-    'content-type',
+    'accept',
+    'accept-encoding',
     'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
 ]

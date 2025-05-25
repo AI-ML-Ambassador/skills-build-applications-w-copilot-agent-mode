@@ -1,28 +1,46 @@
 from django.core.management.base import BaseCommand
-from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
+from pymongo import MongoClient
 
 class Command(BaseCommand):
-    help = 'Populate the database with test data'
+    help = 'Populate the octofit_db database with test data'
 
     def handle(self, *args, **kwargs):
-        # Create test users
-        user1 = User.objects.create(email='user1@example.com', name='User One')
-        user2 = User.objects.create(email='user2@example.com', name='User Two')
+        client = MongoClient('localhost', 27017)
+        db = client['octofit_db']
 
-        # Create test teams
-        team1 = Team.objects.create(name='Team Alpha')
-        team2 = Team.objects.create(name='Team Beta')
+        # Test data for users
+        users = [
+            {"email": "user1@example.com", "name": "User One"},
+            {"email": "user2@example.com", "name": "User Two"},
+        ]
+        db.users.insert_many(users)
 
-        # Create test activities
-        Activity.objects.create(user=user1, description='Running 5km')
-        Activity.objects.create(user=user2, description='Cycling 10km')
+        # Test data for teams
+        teams = [
+            {"name": "Team Alpha"},
+            {"name": "Team Beta"},
+        ]
+        db.teams.insert_many(teams)
 
-        # Create test leaderboard entries
-        Leaderboard.objects.create(team=team1, points=100)
-        Leaderboard.objects.create(team=team2, points=80)
+        # Test data for activities
+        activities = [
+            {"user": "user1@example.com", "activity": "Running", "duration": 30},
+            {"user": "user2@example.com", "activity": "Cycling", "duration": 45},
+        ]
+        db.activity.insert_many(activities)
 
-        # Create test workouts
-        Workout.objects.create(name='Morning Yoga')
-        Workout.objects.create(name='Evening Cardio')
+        # Test data for leaderboard
+        leaderboard = [
+            {"team": "Team Alpha", "points": 100},
+            {"team": "Team Beta", "points": 80},
+        ]
+        db.leaderboard.insert_many(leaderboard)
+
+        # Test data for workouts
+        workouts = [
+            {"name": "Workout A", "description": "Full body workout"},
+            {"name": "Workout B", "description": "Cardio workout"},
+        ]
+        db.workouts.insert_many(workouts)
 
         self.stdout.write(self.style.SUCCESS('Successfully populated the database with test data'))

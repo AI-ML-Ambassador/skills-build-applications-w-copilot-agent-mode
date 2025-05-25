@@ -27,9 +27,9 @@ class WorkoutViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 def api_root(request, format=None):
     return Response({
-        'users': 'https://crispy-space-giggle-69r5wxp94x94hw4g-8000.app.github.dev/api/users/',
-        'teams': 'https://crispy-space-giggle-69r5wxp94x94hw4g-8000.app.github.dev/api/teams/',
-        'activity': 'https://crispy-space-giggle-69r5wxp94x94hw4g-8000.app.github.dev/api/activity/',
-        'leaderboard': 'https://crispy-space-giggle-69r5wxp94x94hw4g-8000.app.github.dev/api/leaderboard/',
-        'workouts': 'https://crispy-space-giggle-69r5wxp94x94hw4g-8000.app.github.dev/api/workouts/',
+        'users': 'https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/users/',
+        'teams': 'https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/teams/',
+        'activity': 'https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/activity/',
+        'leaderboard': 'https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/leaderboard/',
+        'workouts': 'https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/workouts/',
     })

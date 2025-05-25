@@ -4,7 +4,7 @@ function Activities() {
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
-    fetch('https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/activity/')
+    fetch('https://laughing-space-winner-g45r6vp47rjr3ww4q-8000.app.github.dev/api/activities/')
       .then(response => response.json())
       .then(data => setActivities(data));
   }, []);
